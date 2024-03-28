@@ -1,8 +1,9 @@
-An open source 65-ish% keyboard running on KMK firmware designed mainly with KiCad.
+# Pear69
+An open source 65-ish% (69 diodes) keyboard running on KMK firmware designed mainly with KiCad.
 
-I had previously made a couple of keyboards, first an ergo and later a 65% board with a proprietary space split. For myself, I mainly wanted to change from ZMK to KMK firmware for, in my opinion, easier modifications on the keymaps and functionality. At the same time I also wanted to include the possibility for different layouts, in case I end up building this for someone that doesn't want ANSI or split space.
+![](https://github.com/tharj/Pear69/blob/main/img/0.png)
 
-![KLE](https://github.com/tharj/Pear69/blob/main/img/1.png)
+I had previously made a couple of keyboards, first an ergo and later a 65% board with a proprietary space split. With this, I mainly wanted to change firmware wise from ZMK to KMK for, in my opinion, easier modifications on the keymaps and functionality. At the same time I also wanted to include the possibility for different layouts, in case I end up building this for someone that doesn't want ANSI or split space.
 
 ## Basics
 
@@ -11,6 +12,8 @@ Default layout for me is ANSI with split space. It's not quite the normal 65% la
 I configured the PCB for the Helios, which is a RP2040 based controller form 0xCB (https://github.com/0xCB-dev/0xCB-Helios). I also designed a way over engineered case for 3D-printing that I used for the first board I put together. 
 
 There is support for one encoder on the right hand side, and also breakouts for an OLED (just under the controller, to cover the controller), and also breakouts for the extra pins that were not used in the key matrix, with 5v, 3.3v and ground. 
+
+![KLE](https://github.com/tharj/Pear69/blob/main/img/1.png)
 
 ## KiCad
 
@@ -25,7 +28,7 @@ I won't go into detail on the basic function of the matrix scanning, as it's bee
 I ended up with a matrix of 7 columns and 10 rows, which allows for up to 70 keys, this leaves quite a few spare pins on the controller for an encoder and OLED and such.  Physical layout of course is not 7x10, so the PCB will end up with some tricky routing of traces.
 
 Using a MX switch and a diode from the marbastlib we imported earlier, I created the 7x10 grid and ended up cutting it in half, to resemble the actual physical layout. With some tweaks to the grid due to the multiple layouts I ended up with a ready schematic for the key switches: 
-![[Pasted image 20240327194027.png]]
+![Matrix](https://github.com/tharj/Pear69/blob/main/img/2.png)
 
 
 From here you can assign a footprint of your choosing, I used a simple MX solder footprint. I tried to go with a hot swap socket at first, but the ANSI/ISO hybrid layout around the enter region got a bit too crowded and I downgraded to solder mount switches. 
@@ -46,7 +49,7 @@ First I routed the traces for the rows and columns, mostly using one side of the
 
 I went with the Helios, which is a RP2040 based c-usb controller, footprint for it was also in the marbastlib library. After adding it to the schematic and to the PCB, I added tags for all the rows and columns, and started to figure out suitable pins on the controller. Having things actually connected in the schematic, will enable nets in the PCB, showing where everything needs to connect and further making it possible to check the validity of all connections with DCR (Design rules checker). It is much easier to sanity check your connections in the schematic vs in the PCB, having an error pop up if you are missing a connection or there is some other violation, is very nice. 
 
-![[Pasted image 20240327201259.png]]
+![KiCad PCB](https://github.com/tharj/Pear69/blob/main/img/3.png)
 As I had some spare pins, I added a OLED breakout below the controller and also an encoder(volume knob) on the right. Rest of the pins got broken out in the arrow cluster in the bottom right, just in case. 
 
 I added the necessary stabilizers for the longer keys that use them, along with some mounting holes, allowing a tray mounting the PCB.
@@ -59,7 +62,7 @@ Using KiCads Fabrication outputs, I exported the necessary gerber files and dril
 
 While I was waiting on the PCBs to be manufactured, I grabbed the plates from KiCad to Solidworks and started to design a case around them. I wanted something quick and dirty so I could build one board when the PCBs arrive. Nothing special in the case design, just top and bottom parts cut in half to get them to a printable size. 
 
-![[Pasted image 20240327203137.png]]
+![Case](https://github.com/tharj/Pear69/blob/main/img/4.png)
 
 When I actually got to printing, it took a few tries to get everything to line up with the PCBs. As a first time ABS printer I quickly learned that it likes to shrink while cooling. Scaling everything up by 0.7% was the final adjustment that made everything fit perfectly.
 
@@ -83,7 +86,7 @@ There is some issues with compatibility when using latest stock KMK on CircuitPy
 
 The problem with the current setup is that when the layout in Peg includes a momentary layer change (MO(#)), Peg includes imports to modules that are not found in the current KMK repo, but have been moved to another module with different name. I worked around this by grabbing the "missing" modtap.py from an old fork of KMK and while it's not a elegant solution, it works for now. The real fix would be to port bs-python for the particular controller, it seems to include the same version of KMK that Peg is configured with.
 
-![[Pasted image 20240327212501.png]] 
+![Peg UI](https://github.com/tharj/Pear69/blob/main/img/5.png)
 
 ## TBD
 
