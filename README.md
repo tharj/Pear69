@@ -68,7 +68,7 @@ While I was waiting on the PCBs to be manufactured, I grabbed the plates from Ki
 
 When I actually got to printing, it took a few tries to get everything to line up with the PCBs. As a first time ABS printer I quickly learned that it likes to shrink while cooling. Scaling everything up by 0.7% was the final adjustment that made everything fit perfectly.
 
-After the PCBs arrived, I soldered up a first prototype with some nice linear Alpaca switches I had lying around so I could get to tinkering around the firmware. There is plenty of videos going over actually building a custom keyboard, so I won't get into it here. 
+After the PCBs arrived, I soldered up a first prototype with some nice linear Alpaca switches I had lying around so I could get to figure out the firmware. There is plenty of videos going over actually building a custom keyboard, so I won't get into it here. 
 
 ## Setting up KMK
 
