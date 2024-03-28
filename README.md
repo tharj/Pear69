@@ -15,6 +15,14 @@ There is support for one encoder on the right hand side, as well as breakouts fo
 
 ![KLE](https://github.com/tharj/Pear69/blob/main/img/1.png)
 
+### BOM:
+- A microcontroller (OxCB Helios)
+- 70ish MX footprint switches of your choice 
+- 70ish SMD diodes
+- One EC11 rotary encoder (optional)
+- One 128x32 OLED display (optional)
+- Keycaps and a case are a nice bonus
+
 ## KiCad
 
 For starters, KiCad is going to need a couple of things to make the design process a bit smoother:
