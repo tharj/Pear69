@@ -2,7 +2,7 @@ An open source 65-ish% keyboard running on KMK firmware designed mainly with KiC
 
 I had previously made a couple of keyboards, first an ergo and later a 65% board with a proprietary space split. For myself, I mainly wanted to change from ZMK to KMK firmware for, in my opinion, easier modifications on the keymaps and functionality. At the same time I also wanted to include the possibility for different layouts, in case I end up building this for someone that doesn't want ANSI or split space.
 
-![[..master/img/1.png]]
+!(..master/img/1.png)
 
 ## Basics
 
